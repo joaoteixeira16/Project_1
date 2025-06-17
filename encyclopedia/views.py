@@ -18,7 +18,8 @@ def entry(request, name):
 
             entry_content = markdown2.markdown(util.get_entry(entry))
             return render(request, 'encyclopedia/entry.html', {
-                "entry":entry_content,
+                "entry_content":entry_content,
+                "entry_name": entry
             })
     else:
         if name not in util.list_entries():
