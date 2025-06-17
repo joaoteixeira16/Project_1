@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Create a new page
+{% endblock %}
+
+{% block body %}
+
+<h1>Create a new page</h1>
+
+<form action="{% url 'wiki:new_entry' %}" method="post">
+    {% csrf_token %}
+    {{form_new}}
+    <br>
+    <input type="submit" name="q" value="Create New Page">
+</form>
+{% for message in messages %}
+<br>
+<div class="alert alert-danger">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+</div>
+{% endfor %}
+
+{% endblock %}
