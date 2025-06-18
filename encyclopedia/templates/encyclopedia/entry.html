@@ -5,7 +5,13 @@
 {% endblock %}
 
 {% block body %}
-
     {{entry_content | safe}}
+
+    <form action="{% url 'wiki:entry' entry_name%}" method="post">
+        {% csrf_token %}
+        {{form_edit}}
+        <br>
+        <input type="submit" name="q" value="Edit This Page">
+    </form>
 
 {% endblock %}

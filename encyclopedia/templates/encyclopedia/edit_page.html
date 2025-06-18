@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit a new page
+{% endblock %}
+
+{% block body %}
+
+<h1>Edit the page of {{entry_name}}</h1>
+
+<form action="{% url 'wiki:edit_page' entry_name %}" method="post">
+    {% csrf_token %}
+    {{form_new}}
+    <br>
+    <input type="submit" name="q" value="Edit Page">
+</form>
+{% for message in messages %}
+<br>
+<div class="alert alert-danger">
+    {{ message }}
+</div>
+{% endfor %}
+
+{% endblock %}
